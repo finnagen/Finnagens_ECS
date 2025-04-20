@@ -15,7 +15,7 @@ export type Entity = {
 	Space: {},
 	
 	Components: {ComponentValue?},
-	Values: {any}?,
+	Value: any?,
 	
 	AddComponentValue: (self: Entity, componentName: string, componentValue: any) -> (),
 	RemoveComponentValue: (self: Entity, componentName: string) -> (),
@@ -51,14 +51,14 @@ function ecs:CreateComponent(name: string): Component
 	return component
 end
 
-function ecs:CreateEntity(name: string, reference: Instance?, values: {any?}): Entity
+function ecs:CreateEntity(name: string, reference: Instance?, value: any?): Entity
 	local entity: Entity = setmetatable({
 		Name = name,
 		Reference = reference,
 		Space = self,
 		
 		Components = {},
-		Values = values
+		Value = value
 	}, ecMethods)
 	table.insert(self.Entities,entity)
 	
